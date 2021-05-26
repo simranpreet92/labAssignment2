@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20B29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Product" representedClassName="Product" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ProductDetail" inverseName="parentFolder" inverseEntity="ProductDetail"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="name"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="ProductDetail" representedClassName="ProductDetail" syncable="YES" codeGenerationType="class">
+        <attribute name="productDescription" optional="YES" attributeType="String"/>
+        <attribute name="productID" attributeType="String"/>
+        <attribute name="productName" optional="YES" attributeType="String"/>
+        <attribute name="productPrice" optional="YES" attributeType="String"/>
+        <attribute name="productProvider" optional="YES" attributeType="String"/>
+        <relationship name="parentFolder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="products" inverseEntity="Product"/>
+        <userInfo>
+            <entry key="productDescription" value="tables , chairs"/>
+            <entry key="productID" value="900"/>
+            <entry key="productName" value="Furniture"/>
+            <entry key="productPrice" value="$ 400"/>
+            <entry key="productProvider" value="mehma"/>
+        </userInfo>
+    </entity>
+    <elements>
+        <element name="Product" positionX="-27" positionY="18" width="128" height="59"/>
+        <element name="ProductDetail" positionX="309.24609375" positionY="18.15234375" width="128" height="14"/>
+    </elements>
+</model>
