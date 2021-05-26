@@ -9,60 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="Ehr-Fo-FOo">
-            <objects>
-                <viewController id="dMc-pX-ara" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7UV-e7-Noi">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="qq" translatesAutoresizingMaskIntoConstraints="NO" id="8bB-Wb-Esm">
-                                <rect key="frame" x="0.0" y="48" width="414" height="491"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="qah-CH-ozg">
-                                <rect key="frame" x="20" y="160" width="200" height="120"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CBj-HA-GlR">
-                                        <rect key="frame" x="6" y="0.0" width="188" height="35"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="VIEW PRODUCTS"/>
-                                        <connections>
-                                            <segue destination="rOG-z7-303" kind="show" id="Kyt-cn-mru"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AD3-Bg-2fX">
-                                        <rect key="frame" x="5.5" y="85" width="189" height="35"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="VIEW PROVIDERS"/>
-                                        <connections>
-                                            <segue destination="tK7-wg-zUS" kind="show" id="28W-eE-YNx"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="iH3-MO-haq"/>
-                                    <constraint firstAttribute="width" constant="200" id="wFH-1H-YGc"/>
-                                </constraints>
-                            </stackView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="gv6-6s-12N"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="qah-CH-ozg" firstAttribute="leading" secondItem="gv6-6s-12N" secondAttribute="leading" constant="20" id="0Y8-EG-qUX"/>
-                            <constraint firstItem="qah-CH-ozg" firstAttribute="top" secondItem="gv6-6s-12N" secondAttribute="top" constant="20" id="URh-aF-wGn"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="kix-FT-itJ"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JhN-Bi-oiI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="366.66666666666669" y="69.642857142857139"/>
-        </scene>
-        <!--Providers Details-->
+        <!--Providers-->
         <scene sceneID="mHX-rx-Tgp">
             <objects>
                 <tableViewController id="tK7-wg-zUS" customClass="productProvider" customModule="A2_FA_iOS_Simranpreet_C0813004" customModuleProvider="target" sceneMemberID="viewController">
@@ -94,7 +41,7 @@
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Providers Details" id="u70-Ga-iMb"/>
+                    <navigationItem key="navigationItem" title="Providers" id="u70-Ga-iMb"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="trashBtn" destination="hpG-fy-DgO" id="chs-7H-5eK"/>
@@ -102,7 +49,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="op8-pH-qKM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="188" y="809"/>
+            <point key="canvasLocation" x="1915.9420289855075" y="795.53571428571422"/>
         </scene>
         <!--PRODUCT-->
         <scene sceneID="wvQ-XN-9qG">
@@ -175,7 +122,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jlz-Km-SAc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1099" y="80"/>
+            <point key="canvasLocation" x="765" y="70"/>
         </scene>
         <!--PRODUCT FILES-->
         <scene sceneID="EyD-1p-HmY">
@@ -216,7 +163,21 @@
                                 <action selector="trashBtnPressed:" destination="JEN-XW-A8w" id="l0C-zU-yfI"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="r7f-0M-kFJ"/>
+                        <barButtonItem enabled="NO" id="LRW-Wy-saE" userLabel="Trash Item">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="trashBtnPressed:" destination="JEN-XW-A8w" id="75o-76-4t8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Providers" image="plus.app.fill" catalog="system" style="plain" id="r7f-0M-kFJ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="tK7-wg-zUS" kind="show" id="Y7V-fG-OSM"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="showProvider" style="plain" id="r75-Ln-RZ8">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
                         <barButtonItem title="Item" image="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" style="done" id="RjI-ym-Aa0">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -372,7 +333,7 @@
                         <color key="barTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </toolbar>
                     <connections>
-                        <segue destination="dMc-pX-ara" kind="relationship" relationship="rootViewController" id="K1n-LY-dHD"/>
+                        <segue destination="rOG-z7-303" kind="relationship" relationship="rootViewController" id="Dx7-yj-hxe"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vMy-kx-BOt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -381,7 +342,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FlG-Jz-P8T"/>
+        <segue reference="2Hc-fs-lLt"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemBlueColor"/>
     <resources>
@@ -392,7 +353,7 @@
         <image name="folder.badge.plus" catalog="system" width="128" height="91"/>
         <image name="paperplane" catalog="system" width="128" height="118"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
-        <image name="qq" width="292" height="172"/>
+        <image name="plus.app.fill" catalog="system" width="128" height="114"/>
         <image name="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" width="128" height="92"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="labelColor">

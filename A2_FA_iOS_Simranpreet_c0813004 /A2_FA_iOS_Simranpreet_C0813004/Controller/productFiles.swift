@@ -50,9 +50,10 @@ class productFiles: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Products_cell", for: indexPath)
         let prod = products[indexPath.row]
-        let prodt = "Product name is "+prod.productName!
+        let prodt = "product name is "+prod.productName!        
         cell.textLabel?.text = prodt
         cell.textLabel?.textColor = .red
+        
         cell.backgroundColor = .white
         return cell
     }

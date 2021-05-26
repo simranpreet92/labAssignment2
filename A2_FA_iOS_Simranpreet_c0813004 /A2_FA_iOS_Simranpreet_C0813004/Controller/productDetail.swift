@@ -46,6 +46,10 @@ class productDetail: UIViewController {
         }
         guard pID.text != "" else {return}
         delegate!.updateProduct(with: pID.text , with: pName.text , with: pDescription.text , with: pPrice.text, with: pProvider.text )
+        guard  pProvider.text != "" else {
+            return
+        }
+        delegate!.updateProduct(with: pID.text , with: pName.text , with: pDescription.text , with: pPrice.text, with: pProvider.text )
     }
 
 }

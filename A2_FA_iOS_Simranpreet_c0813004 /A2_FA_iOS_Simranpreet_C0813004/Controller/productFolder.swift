@@ -19,8 +19,8 @@ class productFolder: UITableViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        let newProduct = Product(context: self.context)
-        newProduct.name = "products"
+       // let newProduct = Product(context: self.context)
+      //  newProduct.name = "products/Providers"
         loadProducts()
         self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
@@ -42,7 +42,8 @@ class productFolder: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "folder_cell", for: indexPath)
-        cell.textLabel?.text = products[indexPath.row].name
+       // cell.textLabel?.text = products[indexPath.row].name
+        cell.textLabel?.text = "PRODUCTS/PROVIDERS"
         cell.textLabel?.textColor = .red
         cell.detailTextLabel?.textColor = .blue
         cell.imageView?.image = UIImage(systemName: "Product")
@@ -93,7 +94,7 @@ class productFolder: UITableViewController {
         alert.addAction(cancelAction)
         alert.addTextField { (field) in
             textField = field
-            textField.placeholder = "product name"
+            textField.placeholder = ""
         }
         
         present(alert, animated: true, completion: nil)

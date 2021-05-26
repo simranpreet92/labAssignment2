@@ -9,8 +9,16 @@ import UIKit
 import CoreData
 class productProvider: UITableViewController {
     // create an array of ProductDetail to populate the table
-    var products = [ProductDetail]()
    
+   
+    var products = [ProductDetail]()
+ 
+    var ProductFolderTaken: Product? {
+        didSet {
+            loadProducts()
+        }
+    }
+    
     // create a context to work with core data
     @IBOutlet var trashBtn: UIBarButtonItem!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -18,10 +26,10 @@ class productProvider: UITableViewController {
     //MARK: - view lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        staticData()
+        navigationItem.title = ProductFolderTaken?.name
         loadProducts()
+       // showSearchBar()
     }
-
 
     // MARK: - Table view data source
 
@@ -37,11 +45,14 @@ class productProvider: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "provider", for: indexPath)
-        
-        cell.textLabel?.text = products[indexPath.row].productProvider
+        let prod = products[indexPath.row]
+        let prodt = prod.productName! + ":" + prod.productProvider!
+        cell.textLabel?.text = prodt
         cell.textLabel?.textColor = .red
+        
+       // cell.detailTextLabel?.text = products[indexPath.row].productName
         cell.detailTextLabel?.textColor = .blue
-        cell.imageView?.image = UIImage(systemName: "Provider")
+        cell.imageView?.image = UIImage(systemName: "Product")
         cell.backgroundColor = .white
         cell.selectionStyle = .none
         return cell
@@ -56,6 +67,8 @@ class productProvider: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            deleteProducts(folder: products[indexPath.row])
+            saveProduct()
             products.remove(at: indexPath.row)
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -64,6 +77,7 @@ class productProvider: UITableViewController {
         }
     }
     
+  
     /// Save notes into core data
     func saveProduct() {
         do {
@@ -72,7 +86,7 @@ class productProvider: UITableViewController {
             print("Error saving the products \(error.localizedDescription)")
         }
     }
-    func loadProducts() {
+   func loadProducts(predicate: NSPredicate? = nil) {
         let request: NSFetchRequest<ProductDetail> = ProductDetail.fetchRequest()
         
         do {
@@ -86,8 +100,7 @@ class productProvider: UITableViewController {
         }
         tableView.reloadData()
     }
-    
-  
+ 
     /// save products into core data
     func deleteProducts(folder: ProductDetail) {
         context.delete(folder)
@@ -103,60 +116,23 @@ class productProvider: UITableViewController {
                 saveProduct()
         }
     }
-    func save(  productProvider: String) {
-      
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        let request: NSFetchRequest<ProductDetail> = ProductDetail.fetchRequest()
-        let managedContext =
-            appDelegate.persistentContainer.viewContext
-        let entity =
-            NSEntityDescription.entity(forEntityName: "ProductDetail",
-                                       in: managedContext)!
-        let product = NSManagedObject(entity: entity,
-                                     insertInto: managedContext)
-     
-      product.setValue(productProvider, forKeyPath: "productProvider")
-        do {
-            products = try context.fetch(request)
-            try managedContext.save()
-        } catch let error as NSError {
-        }
-        tableView.reloadData()
-    }
-    
-       // appending data into core data
-        func staticData() {
-        guard let appDelegate =
-            UIApplication.shared.delegate as? AppDelegate else {
-                return
-        }
-        
-       let managedContext =
-            appDelegate.persistentContainer.viewContext
-        let entity =
-                NSEntityDescription.entity(forEntityName: "ProductDetail",
-                                           in: managedContext)!
-            
-            let p1 = NSManagedObject(entity: entity,
-                                          insertInto: managedContext)
-            
-    
-        p1.setValue("Mary", forKeyPath: "productProvider")
-        let p2 = NSManagedObject(entity: entity,
-                                          insertInto: managedContext)
-        p2.setValue("john", forKeyPath: "productProvider")
-            self.save(productProvider: "methew")
-            self.save(productProvider: "seema")
-            self.save(productProvider: "neha")
-            self.save(productProvider: "ginni")
+   
+    /// update note in core data
+    /// - Parameter title: note's title
+    func updateProduct(with ID: String , with name : String , with description : String , with price : String , with provider : String ) {
+        products = []
+        let newData = ProductDetail(context: context)
+        newData.productID = ID
+        newData.productName = name
+        newData.productDescription = description
+        newData.productPrice = price
+        newData.productProvider = provider
+        newData.parentFolder = ProductFolderTaken
+        saveProduct()
+        loadProducts()
     }
     
 
 }
 
     
-    
-
